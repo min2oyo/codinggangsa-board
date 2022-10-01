@@ -20,7 +20,7 @@ repositories {
 }
 
 // Cannot load driver class: oracle.jdbc.OracleDriver
-// ojdbc6.jar add build path하지 않은 에러
+// ojdbc11.jar add build path하지 않은 에러
 
 // Gradle 파일을 수정하면 반드시 저장 후 Refresh Gradle Project로 반영
 dependencies {
