@@ -9,6 +9,10 @@ import com.min.board.dto.BoardDto;
 @Mapper
 public interface BoardDao {
 
+	// Main
 	public List<BoardDto> list();
+
+	// Create
+	public int write(String boardName, String boardTitle, String boardContent);
 
 }

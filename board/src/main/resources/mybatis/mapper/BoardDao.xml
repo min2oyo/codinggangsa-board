@@ -11,11 +11,11 @@
 		select * from board order by boardIdx desc
 	</select>
 
-	<!-- 글쓰기 -->
-<!-- 	<insert id="write"> -->
-<!-- 		insert into board (board_idx, board_name, board_title, board_content, board_date) -->
-<!-- 		values (board_seq.nextval, #{param1}, #{param2}, #{param3}, sysdate) -->
-<!-- 	</insert> -->
+	<!-- Create -->
+	<insert id="write">
+		insert into board (boardIdx, boardName, boardTitle, boardContent, boardDate)
+		values (board_seq.nextval, #{param1}, #{param2}, #{param3}, sysdate)
+	</insert>
 
 	<!-- 글보기 -->
 <!-- 	<select id="viewDTO" resultType="com.min.board.BoardDTO"> -->
