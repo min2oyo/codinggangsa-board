@@ -60,7 +60,7 @@
 				<td colspan="2">
 					<input type="submit" value="확인" />
 					<a href="/"><input type="button" value="목록" /></a>
-					<a href="/delete?boardIdx=${dto.boardIdx}"><input type="button" value="삭제" /></a>
+					<a href="/delete?boardIdx=${data.boardIdx}"><input type="button" value="삭제" /></a>
 				</td>
 			</tr>
 		</table>

@@ -61,7 +61,6 @@
 			<td colspan="2">
 				<a href="/update?boardIdx=${data.boardIdx}"><input type="button" value="수정" /></a>
 				<a href="/"><input type="button" value="목록" /></a>
-				<a href="/delete?boardIdx=${data.boardIdx}"><input type="button" value="삭제" /></a>
 			</td>
 		</tr>
 	</table>

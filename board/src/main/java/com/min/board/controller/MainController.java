@@ -98,4 +98,26 @@ public class MainController {
 
 	}
 
+	// Delete
+	@RequestMapping("/delete")
+	public String delete(HttpServletRequest request, @RequestParam("boardIdx") String boardIdx) {
+
+		int result = boardDao.delete(boardIdx);
+
+		if (result == 1) {
+
+			request.getSession().setAttribute("alert", "글 삭제 성공!");
+			System.out.println("글 삭제 성공!");
+			return "redirect:/";
+
+		} else {
+
+			request.getSession().setAttribute("alert", "글 삭제 실패ㅜ");
+			System.out.println("글 삭제 실패ㅜ");
+			return "redirect:/update?boardIdx=" + boardIdx;
+
+		}
+
+	}
+
 }

@@ -21,4 +21,7 @@ public interface BoardDao {
 	// Update
 	public int update(String boardIdx, String boardTitle, String boardContent);
 
+	// Delete
+	public int delete(String boardIdx);
+
 }
