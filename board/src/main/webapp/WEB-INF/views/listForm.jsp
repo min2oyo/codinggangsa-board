@@ -1,4 +1,6 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,16 +15,21 @@
 			margin: 0 auto;
 			padding: 0 auto;
 			overflow: hidden;
-		}
-		h2, td {
 			text-align: center;
+		}
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		table {
+ 			width: 500px;
 		}
 	</style>
 </head>
 
 <body>
 	<h2>게시판 글 목록</h2>
-	<table width="500" cellpadding="0" cellspacing="0" border="1">
+	<table>
 		<tr>
 			<th>번호</th>
 			<th>이름</th>
@@ -30,13 +37,15 @@
 			<th>날짜</th>
 			<th>조회수</th>
 		</tr>
-		<tr>
-			<td>1</td>
-			<td>홍유진</td>
-			<td>제목</td>
-			<td>날짜</td>
-			<td>3</td>
-		</tr>
+		<c:forEach var="dto" items="${list}">
+			<tr>
+				<td>${dto.boardIdx}</td>
+				<td>${dto.boardName}</td>
+				<td>${dto.boardTitle}</td>
+				<td>${dto.boardDate}</td>
+				<td>${dto.boardHit}</td>
+			</tr>
+		</c:forEach>
 		<tr>
 			<td colspan="5"><a href="writeForm">글 작성</a></td>
 		</tr>

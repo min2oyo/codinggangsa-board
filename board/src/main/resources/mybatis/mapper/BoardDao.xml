@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.min.board.dao.BoardDao">
+
+	<!-- Main -->
+	<select id="list" resultType="com.min.board.dto.BoardDto">
+		select * from board order by boardIdx desc
+	</select>
+
+	<!-- 글쓰기 -->
+<!-- 	<insert id="write"> -->
+<!-- 		insert into board (board_idx, board_name, board_title, board_content, board_date) -->
+<!-- 		values (board_seq.nextval, #{param1}, #{param2}, #{param3}, sysdate) -->
+<!-- 	</insert> -->
+
+	<!-- 글보기 -->
+<!-- 	<select id="viewDTO" resultType="com.min.board.BoardDTO"> -->
+<!-- 		select * from board where board_idx = #{param1} -->
+<!-- 	</select> -->
+	
+	<!-- 글수정 -->
+<!-- 	<update id="updateDto"> -->
+<!-- 		update board set board_name = #{param2}, board_title = #{param3}, board_content = #{param4} where board_idx = #{param1} -->
+<!-- 	</update> -->
+	
+	<!-- 글삭제 -->
+<!-- 	<delete id="deleteDto"> -->
+<!-- 		delete from board where board_idx = #{param1} -->
+<!-- 	</delete> -->
+	
+	<!-- 조회수 증가 -->
+<!-- 	<update id="hit"> -->
+<!-- 		update board set board_hit = board_hit + 1 where board_idx = #{param1} -->
+<!-- 	</update> -->
+
+
+</mapper>
