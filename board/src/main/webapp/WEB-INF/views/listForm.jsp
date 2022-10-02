@@ -41,8 +41,8 @@
 			<tr>
 				<td>${dto.boardIdx}</td>
 				<td>${dto.boardName}</td>
-				<td>${dto.boardTitle}</td>
-				<td>${dto.boardDate}</td>
+				<td><a href="contentForm?boardIdx=${dto.boardIdx}">${dto.boardTitle}</a></td>
+				<td><fmt:formatDate value="${dto.boardDate}" pattern="yyyy-HH-dd HH:mm:ss" /></td>
 				<td>${dto.boardHit}</td>
 			</tr>
 		</c:forEach>
