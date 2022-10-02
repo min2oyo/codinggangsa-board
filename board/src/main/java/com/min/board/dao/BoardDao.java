@@ -18,4 +18,7 @@ public interface BoardDao {
 	// Read
 	public BoardDto read(String boardIdx);
 
+	// Update
+	public int update(String boardIdx, String boardTitle, String boardContent);
+
 }

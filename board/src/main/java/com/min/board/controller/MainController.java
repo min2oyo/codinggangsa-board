@@ -1,5 +1,7 @@
 package com.min.board.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,19 +36,21 @@ public class MainController {
 
 	// Create
 	@RequestMapping("/createOk")
-	public String createOk(@RequestParam("boardName") String boardName, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
+	public String createOk(HttpServletRequest request, @RequestParam("boardName") String boardName, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
 
 		int result = boardDao.create(boardName, boardTitle, boardContent);
 
 		if (result == 1) {
 
 			System.out.println("글 등록 성공!");
+			request.getSession().setAttribute("alert", "글 등록 성공!");
 			return "redirect:/";
 
 		} else {
 
 			System.out.println("글 등록 실패ㅜ");
-			return "redirect:/write";
+			request.getSession().setAttribute("alert", "글 등록 실패ㅜ");
+			return "redirect:/create";
 
 		}
 
@@ -69,6 +73,28 @@ public class MainController {
 		model.addAttribute("data", boardDao.read(boardIdx));
 
 		return "update";
+
+	}
+
+	// Update
+	@RequestMapping("/updateOk")
+	public String updateOk(HttpServletRequest request, @RequestParam("boardIdx") String boardIdx, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
+
+		int result = boardDao.update(boardIdx, boardTitle, boardContent);
+
+		if (result == 1) {
+
+			System.out.println("글 수정 성공!");
+			request.getSession().setAttribute("alert", "글 수정 성공!");
+			return "redirect:/read?boardIdx=" + boardIdx;
+
+		} else {
+
+			System.out.println("글 수정 실패ㅜ");
+			request.getSession().setAttribute("alert", "글 수정 실패ㅜ");
+			return "redirect:/update?boardIdx=" + boardIdx;
+
+		}
 
 	}
 

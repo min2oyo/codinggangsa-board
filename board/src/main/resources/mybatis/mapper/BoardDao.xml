@@ -22,10 +22,10 @@
 		select * from board where boardIdx = #{param1}
 	</select>
 	
-	<!-- 글수정 -->
-<!-- 	<update id="updateDto"> -->
-<!-- 		update board set board_name = #{param2}, board_title = #{param3}, board_content = #{param4} where board_idx = #{param1} -->
-<!-- 	</update> -->
+	<!-- Update -->
+	<update id="update">
+		update board set boardTitle = #{param2}, boardContent = #{param3} where boardIdx = #{param1}
+	</update>
 	
 	<!-- 글삭제 -->
 <!-- 	<delete id="deleteDto"> -->

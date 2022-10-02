@@ -33,12 +33,12 @@
 </head>
 
 <body>
-	<h2>글 내용</h2>
-	<form action="update" method="post">
+	<h2>글 수정</h2>
+	<form action="updateOk" method="post">
 		<table>
 			<tr>
 				<td>번호</td>
-				<td class="textLeft">${data.boardIdx}</td>
+				<td class="textLeft"><input type="hidden" name="boardIdx" value="${data.boardIdx}" size="50" />${data.boardIdx}</td>
 			</tr>
 			<tr>
 				<td>조회수</td>
@@ -54,11 +54,11 @@
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td class="textLeft"><textarea class="textLeft" name="boardContent" rows="10" cols="50">${data.boardName}</textarea></td>
+				<td class="textLeft"><textarea class="textLeft" name="boardContent" rows="10" cols="50">${data.boardContent}</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="수정" />
+					<input type="submit" value="확인" />
 					<a href="/"><input type="button" value="목록" /></a>
 					<a href="/delete?boardIdx=${dto.boardIdx}"><input type="button" value="삭제" /></a>
 				</td>

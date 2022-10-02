@@ -45,13 +45,13 @@
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td class="textLeft"><textarea class="textLeft" rows="10" cols="50" name="boardContent"></textarea></td>
+				<td class="textLeft"><textarea class="textLeft" name="boardContent" rows="10" cols="50"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="등록"/>
-					<input type="reset" value="다시 쓰기"/>
 					<a href="/"><input type="button" value="목록"></a>
+					<input type="reset" value="다시 쓰기"/>
 				</td>
 			</tr>
 		</table>

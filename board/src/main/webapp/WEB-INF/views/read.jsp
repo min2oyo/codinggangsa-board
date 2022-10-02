@@ -55,7 +55,7 @@
 		</tr>
 		<tr style="height: 300px">
 			<td>내용</td>
-			<td class="textLeft">${data.boardName}</td>
+			<td class="textLeft">${data.boardContent}</td>
 		</tr>
 		<tr>
 			<td colspan="2">
