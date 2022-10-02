@@ -16,21 +16,23 @@ public class MainController {
 	@Autowired
 	BoardDao boardDao;
 
+	// Main
 	@RequestMapping("/")
-	public String root() {
-
-		return "redirect:listForm";
-
-	}
-
-	@RequestMapping("/listForm")
 	public String listFrom(Model model) {
 
 		List<BoardDto> list = boardDao.list();
 		System.out.println(list);
 		model.addAttribute("list", list);
 
-		return "listForm";
+		return "index";
+
+	}
+
+	// Create 이동
+	@RequestMapping("/write")
+	public String writeForm() {
+
+		return "write";
 
 	}
 

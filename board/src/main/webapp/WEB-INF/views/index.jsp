@@ -41,13 +41,13 @@
 			<tr>
 				<td>${dto.boardIdx}</td>
 				<td>${dto.boardName}</td>
-				<td><a href="contentForm?boardIdx=${dto.boardIdx}">${dto.boardTitle}</a></td>
+				<td><a href="content?boardIdx=${dto.boardIdx}">${dto.boardTitle}</a></td>
 				<td><fmt:formatDate value="${dto.boardDate}" pattern="yyyy-HH-dd HH:mm:ss" /></td>
 				<td>${dto.boardHit}</td>
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="5"><a href="writeForm">글 작성</a></td>
+			<td colspan="5"><a href="write">글 작성</a></td>
 		</tr>
 	</table>
 </body>
