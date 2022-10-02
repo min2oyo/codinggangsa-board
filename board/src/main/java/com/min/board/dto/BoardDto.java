@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@SuppressWarnings("unused")
 public class BoardDto {
 
 	private int boardIdx;

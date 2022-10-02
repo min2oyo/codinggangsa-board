@@ -17,10 +17,12 @@
 			overflow: hidden;
 			text-align: center;
 		}
+		
 		table, th, td {
 			border: 1px solid black;
 			border-collapse: collapse;
 		}
+		
 		table {
  			width: 500px;
 		}
@@ -37,17 +39,17 @@
 			<th>날짜</th>
 			<th>조회수</th>
 		</tr>
-		<c:forEach var="dto" items="${list}">
+		<c:forEach var="data" items="${data}">
 			<tr>
-				<td>${dto.boardIdx}</td>
-				<td>${dto.boardName}</td>
-				<td><a href="content?boardIdx=${dto.boardIdx}">${dto.boardTitle}</a></td>
-				<td><fmt:formatDate value="${dto.boardDate}" pattern="yyyy-HH-dd HH:mm:ss" /></td>
-				<td>${dto.boardHit}</td>
+				<td>${data.boardIdx}</td>
+				<td>${data.boardName}</td>
+				<td><a href="read?boardIdx=${data.boardIdx}">${data.boardTitle}</a></td>
+				<td><fmt:formatDate value="${data.boardDate}" pattern="yyyy-HH-dd HH:mm:ss" /></td>
+				<td>${data.boardHit}</td>
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="5"><a href="write">글 작성</a></td>
+			<td colspan="5"><a href="create">등록</a></td>
 		</tr>
 	</table>
 </body>

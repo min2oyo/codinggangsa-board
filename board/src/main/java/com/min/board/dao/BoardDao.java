@@ -13,6 +13,9 @@ public interface BoardDao {
 	public List<BoardDto> list();
 
 	// Create
-	public int write(String boardName, String boardTitle, String boardContent);
+	public int create(String boardName, String boardTitle, String boardContent);
+
+	// Read
+	public BoardDto read(String boardIdx);
 
 }
