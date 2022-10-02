@@ -1,12 +1,11 @@
 package com.min.board.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.min.board.dao.BoardDao;
 
@@ -36,21 +35,16 @@ public class MainController {
 
 	// Create
 	@RequestMapping("/createOk")
-	public String createOk(HttpServletRequest request, @RequestParam("boardName") String boardName, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
+	@ResponseBody
+	public String createOk(@RequestParam("boardName") String boardName, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
 
-		int result = boardDao.create(boardName, boardTitle, boardContent);
+		if (boardDao.create(boardName, boardTitle, boardContent) == 1) {
 
-		if (result == 1) {
-
-			System.out.println("글 등록 성공!");
-			request.getSession().setAttribute("alert", "글 등록 성공!");
-			return "redirect:/";
+			return "<script>alert('글 등록 성공!');location.href='/';</script>";
 
 		} else {
 
-			System.out.println("글 등록 실패ㅜ");
-			request.getSession().setAttribute("alert", "글 등록 실패ㅜ");
-			return "redirect:/create";
+			return "<script>alert('글 등록 실패ㅜ!');location.href='/create';</script>";
 
 		}
 
@@ -78,21 +72,16 @@ public class MainController {
 
 	// Update
 	@RequestMapping("/updateOk")
-	public String updateOk(HttpServletRequest request, @RequestParam("boardIdx") String boardIdx, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
+	@ResponseBody
+	public String updateOk(@RequestParam("boardIdx") String boardIdx, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
 
-		int result = boardDao.update(boardIdx, boardTitle, boardContent);
+		if (boardDao.update(boardIdx, boardTitle, boardContent) == 1) {
 
-		if (result == 1) {
-
-			System.out.println("글 수정 성공!");
-			request.getSession().setAttribute("alert", "글 수정 성공!");
-			return "redirect:/read?boardIdx=" + boardIdx;
+			return "<script>alert('글 수정 성공!');location.href='/read?boardIdx=" + boardIdx + "';</script>";
 
 		} else {
 
-			System.out.println("글 수정 실패ㅜ");
-			request.getSession().setAttribute("alert", "글 수정 실패ㅜ");
-			return "redirect:/update?boardIdx=" + boardIdx;
+			return "<script>alert('글 수정 실패ㅜ');location.href='/update?boardIdx=" + boardIdx + "';</script>";
 
 		}
 
@@ -100,21 +89,16 @@ public class MainController {
 
 	// Delete
 	@RequestMapping("/delete")
-	public String delete(HttpServletRequest request, @RequestParam("boardIdx") String boardIdx) {
+	@ResponseBody
+	public String delete(@RequestParam("boardIdx") String boardIdx) {
 
-		int result = boardDao.delete(boardIdx);
+		if (boardDao.delete(boardIdx) == 1) {
 
-		if (result == 1) {
-
-			request.getSession().setAttribute("alert", "글 삭제 성공!");
-			System.out.println("글 삭제 성공!");
-			return "redirect:/";
+			return "<script>alert('글 삭제 성공!');location.href='/';</script>";
 
 		} else {
 
-			request.getSession().setAttribute("alert", "글 삭제 실패ㅜ");
-			System.out.println("글 삭제 실패ㅜ");
-			return "redirect:/update?boardIdx=" + boardIdx;
+			return "<script>alert('글 삭제 실패ㅜ');history.back();</script>";
 
 		}
 
