@@ -11,31 +11,31 @@
 		select * from board order by boardIdx desc
 	</select>
 
-	<!-- Create -->
+	<!-- 글 Create -->
 	<insert id="create">
 		insert into board (boardIdx, boardName, boardTitle, boardContent, boardDate)
 		values (board_seq.nextval, #{param1}, #{param2}, #{param3}, sysdate)
 	</insert>
 
-	<!-- Read -->
+	<!-- 글 Read -->
 	<select id="read" resultType="com.min.board.dto.BoardDto">
 		select * from board where boardIdx = #{param1}
 	</select>
 	
-	<!-- Update -->
+	<!-- 글 Update -->
 	<update id="update">
 		update board set boardTitle = #{param2}, boardContent = #{param3} where boardIdx = #{param1}
 	</update>
 	
-	<!-- 글삭제 -->
+	<!-- 글 Delete -->
 	<delete id="delete">
 		delete from board where boardIdx = #{param1}
 	</delete>
 	
-	<!-- 조회수 증가 -->
-<!-- 	<update id="hit"> -->
-<!-- 		update board set board_hit = board_hit + 1 where board_idx = #{param1} -->
-<!-- 	</update> -->
+	<!-- 조회수 Update -->
+	<update id="hit">
+		update board set boardHit = boardHit + 1 where boardIdx = #{param1}
+	</update>
 
 
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.min.board.dao.BoardDao;
+import com.min.board.dao.ReplyDao;
 
 @Controller
 public class MainController {
@@ -15,17 +16,20 @@ public class MainController {
 	@Autowired
 	BoardDao boardDao;
 
+	@Autowired
+	ReplyDao replyDao;
+
 	// Main
 	@RequestMapping("/")
 	public String index(Model model) {
 
-		model.addAttribute("data", boardDao.list());
+		model.addAttribute("board", boardDao.list());
 
 		return "main";
 
 	}
 
-	// Create 이동
+	// 글 Create 이동
 	@RequestMapping("/create")
 	public String create() {
 
@@ -33,7 +37,7 @@ public class MainController {
 
 	}
 
-	// Create
+	// 글 Create
 	@RequestMapping("/createOk")
 	@ResponseBody
 	public String createOk(@RequestParam("boardName") String boardName, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
@@ -50,27 +54,29 @@ public class MainController {
 
 	}
 
-	// Read
+	// 글 Read
 	@RequestMapping("/read")
 	public String read(Model model, @RequestParam("boardIdx") String boardIdx) {
 
-		model.addAttribute("data", boardDao.read(boardIdx));
+		boardDao.hit(boardIdx);	// 조회수 증가
+		model.addAttribute("board", boardDao.read(boardIdx));	// 글 DB
+		model.addAttribute("reply", replyDao.list(boardIdx));	// 댓글 DB
 
 		return "read";
 
 	}
 
-	// Update 이동
+	// 글 Update 이동
 	@RequestMapping("/update")
 	public String update(Model model, @RequestParam("boardIdx") String boardIdx) {
 
-		model.addAttribute("data", boardDao.read(boardIdx));
+		model.addAttribute("board", boardDao.read(boardIdx));
 
 		return "update";
 
 	}
 
-	// Update
+	// 글 Update
 	@RequestMapping("/updateOk")
 	@ResponseBody
 	public String updateOk(@RequestParam("boardIdx") String boardIdx, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
@@ -87,7 +93,7 @@ public class MainController {
 
 	}
 
-	// Delete
+	// 글 Delete
 	@RequestMapping("/delete")
 	@ResponseBody
 	public String delete(@RequestParam("boardIdx") String boardIdx) {

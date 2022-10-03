@@ -26,7 +26,7 @@
  			width: 500px;
 		}
 		
-		.textLeft {
+		.data {
 			text-align: left;
 		}
 	</style>
@@ -38,29 +38,30 @@
 		<table>
 			<tr>
 				<td>번호</td>
-				<td class="textLeft"><input type="hidden" name="boardIdx" value="${data.boardIdx}" size="50" />${data.boardIdx}</td>
+				<td class="data"><input type="hidden" name="boardIdx" value="${board.boardIdx}" size="50" />${board.boardIdx}</td>
 			</tr>
 			<tr>
 				<td>조회수</td>
-				<td class="textLeft">${data.boardHit}</td>
+				<td class="data">${board.boardHit}</td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td class="textLeft">${data.boardName}</td>
+				<td class="data">${board.boardName}</td>
 			</tr>
 			<tr>
 				<td>제목</td>
-				<td class="textLeft"><input class="textLeft" type="text" name="boardTitle" value="${data.boardTitle}" size="50" /></td>
+				<td class="data"><input class="data" type="text" name="boardTitle" value="${board.boardTitle}" size="50" /></td>
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td class="textLeft"><textarea class="textLeft" name="boardContent" rows="10" cols="50">${data.boardContent}</textarea></td>
+				<td class="data"><textarea class="data" name="boardContent" rows="10" cols="50">${board.boardContent}</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="확인" />
+					<a href="/read?boardIdx=${board.boardIdx}"><input type="button" value="취소" /></a>
 					<a href="/"><input type="button" value="목록" /></a>
-					<a href="/delete?boardIdx=${data.boardIdx}"><input type="button" value="삭제" /></a>
+					<a href="/delete?boardIdx=${board.boardIdx}"><input type="button" value="삭제" /></a>
 				</td>
 			</tr>
 		</table>

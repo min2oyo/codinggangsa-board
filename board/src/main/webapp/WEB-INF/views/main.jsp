@@ -39,13 +39,13 @@
 			<th>날짜</th>
 			<th>조회수</th>
 		</tr>
-		<c:forEach var="data" items="${data}">
+		<c:forEach var="board" items="${board}">
 			<tr>
-				<td>${data.boardIdx}</td>
-				<td>${data.boardName}</td>
-				<td><a href="read?boardIdx=${data.boardIdx}">${data.boardTitle}</a></td>
-				<td><fmt:formatDate value="${data.boardDate}" pattern="yyyy-HH-dd HH:mm:ss" /></td>
-				<td>${data.boardHit}</td>
+				<td>${board.boardIdx}</td>
+				<td>${board.boardName}</td>
+				<td><a href="read?boardIdx=${board.boardIdx}">${board.boardTitle}</a></td>
+				<td><fmt:formatDate value="${board.boardDate}" pattern="yyyy-HH-dd HH:mm:ss" /></td>
+				<td>${board.boardHit}</td>
 			</tr>
 		</c:forEach>
 		<tr>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +27,7 @@
 			width: 500px;
 		}
 		
-		.textLeft {
+		.data {
 			width: 420px;
 			padding: 5px;
 			text-align: left;
@@ -39,31 +40,80 @@
 	<table>
 		<tr>
 			<td>번호</td>
-			<td class="textLeft">${data.boardIdx}</td>
+			<td class="data">${board.boardIdx}</td>
 		</tr>
 		<tr>
 			<td>조회수</td>
-			<td class="textLeft">${data.boardHit}</td>
+			<td class="data">${board.boardHit}</td>
 		</tr>
 		<tr>
 			<td>이름</td>
-			<td class="textLeft">${data.boardName}</td>
+			<td class="data">${board.boardName}</td>
 		</tr>
 		<tr>
 			<td>제목</td>
-			<td class="textLeft">${data.boardTitle}</td>
+			<td class="data">${board.boardTitle}</td>
 		</tr>
 		<tr style="height: 300px">
 			<td>내용</td>
-			<td class="textLeft">${data.boardContent}</td>
+			<td class="data">${board.boardContent}</td>
 		</tr>
 		<tr>
 			<td colspan="2">
-				<a href="/update?boardIdx=${data.boardIdx}"><input type="button" value="수정" /></a>
+				<a href="/update?boardIdx=${board.boardIdx}"><input type="button" value="수정" /></a>
 				<a href="/"><input type="button" value="목록" /></a>
 			</td>
 		</tr>
 	</table>
+	
+	<br>
+	
+	<!-- 댓글 등록 -->
+	<form action="createReply" method="post">
+		<table>
+			<caption style="text-align: left">댓글</caption>
+			<tr>
+				<td>댓글</td>
+				<td><textarea class="data" rows="2" cols="50" name="replyContent"></textarea></td>
+			</tr>
+			<tr>
+				<td>별명</td>
+				<td><input class="data" type="text" name="replyName" /></td>
+			</tr>
+			<tr>
+				<td style="text-align: left" colspan="2"><input type="submit" value="등록" /></td>
+			</tr>
+		</table>
+	</form>
+	
+	<br>
+	
+	<!-- 댓글 목록 -->
+	<table>
+		<tr>
+			<th>별명</th>
+			<th>내용</th>
+			<th>날짜</th>
+			<th>삭제</th>
+		</tr>
+		<c:forEach var="reply" items="${reply}">
+			<tr>
+				<td>${reply.replyName}</td>
+				<td>${reply.replyContent}</td>
+				<td><fmt:formatDate value="${reply.replyDate}" pattern="yyyy-MM-dd hh:mm:ss" /></td>
+				<td><a href="deleteReply?replyIdx=${reply.replyIdx}"><button>삭제</button></a></td>
+			</tr>
+		</c:forEach>
+	</table>
+	
+	<script>
+		// 뒤로가기 할 때, 페이지 재로딩 | 현재 실행 안 됨
+		window.onpageshow = event => {
+			if (event.persisted) {
+				document.location.reload();
+			}
+		};
+	</script>
 </body>
 
 </html>

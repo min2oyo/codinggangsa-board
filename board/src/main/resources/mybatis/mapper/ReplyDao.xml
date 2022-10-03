@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.min.board.dao.ReplyDao">
+
+	<!-- 댓글 List -->
+	<select id="list" resultType="com.min.board.dto.ReplyDto">
+		select * from reply where replyBoardIdx = ${param1} order by replyIdx desc
+	</select>
+
+	<!-- 댓글 Create -->
+	<insert id="create">
+		insert into reply (replyIdx, replyName, replyContent, replyBoardIdx, replyDate)
+		values (reply_seq.nextval, #{param1}, #{param2}, #{param3}, sysdate)
+	</insert>
+	
+	<!-- 댓글 Delete -->
+	<delete id="delete">
+		delete from board where replyIdx = #{param1}
+	</delete>
+	
+</mapper>
