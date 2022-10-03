@@ -1,4 +1,8 @@
 # codinggangsa-board
+- 강의 출처
+  - 강사: 코딩강사
+  - URL: https://youtube.com/playlist?list=PLrSOSlasEemXPpfWvSYSpfTwTrq2t0wZ7
+
 - 수정할 사항
   - read 창에서 뒤로 가기 할 때 자바스크립트 새로고침이 안 됨
   - update 창에서 취소 누를 때 조회수 증가함
