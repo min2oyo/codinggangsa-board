@@ -34,7 +34,7 @@
 
 <body>
 	<h2>글 수정</h2>
-	<form action="updateOk" method="post">
+	<form action="update" method="post">
 		<table>
 			<tr>
 				<td>번호</td>
@@ -59,7 +59,7 @@
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="확인" />
-					<a href="/read?boardIdx=${board.boardIdx}"><input type="button" value="취소" /></a>
+					<a href="/readPage?boardIdx=${board.boardIdx}"><input type="button" value="취소" /></a>
 					<a href="/"><input type="button" value="목록" /></a>
 					<a href="/delete?boardIdx=${board.boardIdx}"><input type="button" value="삭제" /></a>
 				</td>

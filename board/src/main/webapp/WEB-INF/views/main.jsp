@@ -43,13 +43,13 @@
 			<tr>
 				<td>${board.boardIdx}</td>
 				<td>${board.boardName}</td>
-				<td><a href="read?boardIdx=${board.boardIdx}">${board.boardTitle}</a></td>
+				<td><a href="readPage?boardIdx=${board.boardIdx}">${board.boardTitle}</a></td>
 				<td><fmt:formatDate value="${board.boardDate}" pattern="yyyy-HH-dd HH:mm:ss" /></td>
 				<td>${board.boardHit}</td>
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="5"><a href="create">등록</a></td>
+			<td colspan="5"><a href="createPage">등록</a></td>
 		</tr>
 	</table>
 </body>

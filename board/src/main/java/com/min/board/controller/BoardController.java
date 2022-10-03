@@ -5,13 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.min.board.dao.BoardDao;
 import com.min.board.dao.ReplyDao;
 
 @Controller
-public class MainController {
+public class BoardController {
 
 	@Autowired
 	BoardDao boardDao;
@@ -19,7 +18,7 @@ public class MainController {
 	@Autowired
 	ReplyDao replyDao;
 
-	// Main
+	// 글 List
 	@RequestMapping("/")
 	public String index(Model model) {
 
@@ -30,33 +29,32 @@ public class MainController {
 	}
 
 	// 글 Create 이동
-	@RequestMapping("/create")
-	public String create() {
+	@RequestMapping("/createPage")
+	public String createPage() {
 
 		return "create";
 
 	}
 
 	// 글 Create
-	@RequestMapping("/createOk")
-	@ResponseBody
-	public String createOk(@RequestParam("boardName") String boardName, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
+	@RequestMapping("/create")
+	public String create(@RequestParam("boardName") String boardName, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
 
 		if (boardDao.create(boardName, boardTitle, boardContent) == 1) {
 
-			return "<script>alert('글 등록 성공!');location.href='/';</script>";
+			return "redirect:/";
 
 		} else {
 
-			return "<script>alert('글 등록 실패ㅜ!');location.href='/create';</script>";
+			return "redirect:/failed?message=create failed:/";
 
 		}
 
 	}
 
 	// 글 Read
-	@RequestMapping("/read")
-	public String read(Model model, @RequestParam("boardIdx") String boardIdx) {
+	@RequestMapping("/readPage")
+	public String readPage(Model model, @RequestParam("boardIdx") String boardIdx) {
 
 		boardDao.hit(boardIdx);	// 조회수 증가
 		model.addAttribute("board", boardDao.read(boardIdx));	// 글 DB
@@ -67,8 +65,8 @@ public class MainController {
 	}
 
 	// 글 Update 이동
-	@RequestMapping("/update")
-	public String update(Model model, @RequestParam("boardIdx") String boardIdx) {
+	@RequestMapping("/updatePage")
+	public String updatePage(Model model, @RequestParam("boardIdx") String boardIdx) {
 
 		model.addAttribute("board", boardDao.read(boardIdx));
 
@@ -77,17 +75,16 @@ public class MainController {
 	}
 
 	// 글 Update
-	@RequestMapping("/updateOk")
-	@ResponseBody
-	public String updateOk(@RequestParam("boardIdx") String boardIdx, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
+	@RequestMapping("/update")
+	public String update(@RequestParam("boardIdx") String boardIdx, @RequestParam("boardTitle") String boardTitle, @RequestParam("boardContent") String boardContent) {
 
 		if (boardDao.update(boardIdx, boardTitle, boardContent) == 1) {
 
-			return "<script>alert('글 수정 성공!');location.href='/read?boardIdx=" + boardIdx + "';</script>";
+			return "redirect:/readPage?boardIdx=" + boardIdx;
 
 		} else {
 
-			return "<script>alert('글 수정 실패ㅜ');location.href='/update?boardIdx=" + boardIdx + "';</script>";
+			return "redirect:/failed?message=update failed :/";
 
 		}
 
@@ -95,16 +92,15 @@ public class MainController {
 
 	// 글 Delete
 	@RequestMapping("/delete")
-	@ResponseBody
 	public String delete(@RequestParam("boardIdx") String boardIdx) {
 
 		if (boardDao.delete(boardIdx) == 1) {
 
-			return "<script>alert('글 삭제 성공!');location.href='/';</script>";
+			return "redirect:/";
 
 		} else {
 
-			return "<script>alert('글 삭제 실패ㅜ');history.back();</script>";
+			return "redirect:/failed?message=delete failed :/";
 
 		}
 

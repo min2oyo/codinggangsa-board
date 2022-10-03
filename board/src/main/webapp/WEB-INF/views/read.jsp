@@ -60,7 +60,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<a href="/update?boardIdx=${board.boardIdx}"><input type="button" value="수정" /></a>
+				<a href="/updatePage?boardIdx=${board.boardIdx}"><input type="button" value="수정" /></a>
 				<a href="/"><input type="button" value="목록" /></a>
 			</td>
 		</tr>
@@ -69,7 +69,8 @@
 	<br>
 	
 	<!-- 댓글 등록 -->
-	<form action="createReply" method="post">
+	<form action="reply/create" method="post">
+		<input type="hidden" name="replyBoardIdx" value="${board.boardIdx}" />
 		<table>
 			<caption style="text-align: left">댓글</caption>
 			<tr>

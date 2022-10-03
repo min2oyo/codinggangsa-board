@@ -33,7 +33,7 @@
 
 <body>
 	<h2>글 쓰기</h2>
-	<form action="createOk" method="post">
+	<form action="create" method="post">
 		<table>
 			<tr>
 				<td>이름</td>
