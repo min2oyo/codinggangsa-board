@@ -1,4 +1,4 @@
-# codinggangsa-board
+# 스프링부트 게시판 만들기
 - 강의 출처
   - URL: https://youtube.com/playlist?list=PLrSOSlasEemXPpfWvSYSpfTwTrq2t0wZ7
   - 강사: 코딩강사
