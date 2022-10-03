@@ -19,7 +19,7 @@
 	
 	<!-- 댓글 Delete -->
 	<delete id="delete">
-		delete from board where replyIdx = #{param1}
+		delete from reply where replyIdx = #{param1}
 	</delete>
 	
 </mapper>

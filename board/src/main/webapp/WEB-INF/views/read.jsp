@@ -36,6 +36,7 @@
 </head>
 
 <body>
+	<!-- 글 내용 -->
 	<h2>글 내용</h2>
 	<table>
 		<tr>
@@ -102,7 +103,7 @@
 				<td>${reply.replyName}</td>
 				<td>${reply.replyContent}</td>
 				<td><fmt:formatDate value="${reply.replyDate}" pattern="yyyy-MM-dd hh:mm:ss" /></td>
-				<td><a href="deleteReply?replyIdx=${reply.replyIdx}"><button>삭제</button></a></td>
+				<td><button onclick="deleteReply(${reply.replyIdx}, ${reply.replyBoardIdx})">삭제</button></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -114,6 +115,11 @@
 				document.location.reload();
 			}
 		};
+		
+		// 댓글 삭제
+		function deleteReply(replyIdx, replyBoardIdx) {
+			confirm(`삭제 ㄱ?`)?location.href="/reply/delete?replyIdx=" + replyIdx + "&replyBoardIdx=" + replyBoardIdx:"";
+		}
 	</script>
 </body>
 
